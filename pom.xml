@@ -79,6 +79,12 @@
     <version.org.ops4j.pax.exam>4.11.0</version.org.ops4j.pax.exam>
     <version.org.apache.servicemix.bundles.javax-inject>1_2</version.org.apache.servicemix.bundles.javax-inject>
 
+    <!-- Java 11 compat -->
+    <version.javax.xml.bind.jaxb-api>2.3.0</version.javax.xml.bind.jaxb-api>
+    <version.com.sun.xml.bind.jaxb-core>2.3.0</version.com.sun.xml.bind.jaxb-core>
+    <version.com.sun.xml.bind.jaxb-impl>2.3.0</version.com.sun.xml.bind.jaxb-impl>
+    <version.javax.activation.javax.activation-api>1.2.0</version.javax.activation.javax.activation-api>
+
     <!-- Failsafe plugin-related properties -->
     <failsafe.arg.line>
       -Dfile.encoding=${project.build.sourceEncoding}
@@ -376,6 +382,28 @@
         <groupId>com.okta.sdk</groupId>
         <artifactId>okta-sdk-httpclient</artifactId>
         <version>${version.okta}</version>
+      </dependency>
+
+      <!-- Java 11 compat -->
+      <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>${version.javax.xml.bind.jaxb-api}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-core</artifactId>
+        <version>${version.com.sun.xml.bind.jaxb-core}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-impl</artifactId>
+        <version>${version.com.sun.xml.bind.jaxb-impl}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>javax.activation-api</artifactId>
+        <version>${version.javax.activation.javax.activation-api}</version>
       </dependency>
 
       <!-- test depends -->
@@ -990,6 +1018,9 @@
             <arg>-AwidsResources=${project.artifactId}.wid:widtemplate.st</arg>
             <arg>-AtemplateResources=kie-deployment-descriptor.xml:kie-ddtemplate.st,serviceinfo.json:serviceinfo.st,repoindex.html:repoindex.part,index.html:indextemplate.st,${project.artifactId}.bpmn2:defaultprocess.st</arg>
           </compilerArgs>
+          <release>11</release>
+          <source>11</source>
+          <target>11</target>
         </configuration>
       </plugin>
       <plugin>
